@@ -1,0 +1,30 @@
+@(expenses: List[Despesa], categorias: List[String], centrosCusto: List[String], expenseForm: Form[(String, String, java.util.Date, Int, String)])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@main("Gerenciador Financeiro .:: Lançamento de despesas") {
+    <h1>@expenses.size expenses(s)</h1>
+
+    <ul>
+        @expenses.map { expense =>
+        <li>
+            @expense
+        </li>
+        }
+    </ul>
+
+    <h2>Add a new Expense</h2>
+
+    @form(routes.Application.launchCost) {
+        @select(expenseForm("categoria"), options(categorias), '_showConstraints -> false, '_label -> "Tipo Despesa:")
+
+        @inputText(expenseForm("valor"), '_showConstraints -> false, '_label -> "Valor: ")
+        @inputText(expenseForm("data"), '_showConstraints -> false, '_label -> "Data: ")
+        @inputText(expenseForm("vezes"), '_showConstraints -> false, '_label -> "Número parcelas: ")
+        @select(expenseForm("centroCusto"), options(centrosCusto), '_showConstraints -> false, '_label -> "Centro de custo: ")
+        <br/>
+        <input type="submit" value="Lançar">
+    }
+    
+}

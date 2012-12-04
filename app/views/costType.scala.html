@@ -1,0 +1,26 @@
+@(costTypeList: List[CostType], typeForm: Form[(String, String)])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@main("Gerenciador Financeiro .:: Tipos de despesa") {
+    <h1>@costTypeList.size tipo(s)</h1>
+
+    <ul>
+        @costTypeList.map { costType =>
+        <li>
+            @costType
+        </li>
+        }
+    </ul>
+
+    <!--<h2>Add a new Expense</h2>-->
+
+    @form(routes.Application.newCostType) {
+        @inputText(typeForm("name"), '_showConstraints -> false, '_label -> "Nome: ")
+        @select(typeForm("fatherCost"), options("None" :: CostType.allNames), '_showConstraints -> true, '_label -> "Despesa pai:", '_required -> false)
+        <br/>
+        <input type="submit" value="Salvar">
+    }
+    
+}

@@ -1,0 +1,62 @@
+11-15 19:52:55 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Table "PLAY_EVOLUTIONS" not found; SQL statement:
+select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%' [42102-158]
+11-15 20:10:50 jdbc[42]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "X'aced0005737200157363616c612e6d6174682e426967446563696d616ce359e6dc7ccc98d20200024c000a626967446563696d616c7400164c6a6176612f6d6174682f426967446563696d616c3b4c00026d637400174c6a6176612f6d6174682f4d617468436f6e746578743b787200167363616c612e6d6174682e5363616c614e756d6265721265d75c7e2e8081020000787200106a6176612e6c616e672e4e756d62657286ac951d0b94e08b0200007870737200146a6176612e6d6174682e426967446563696d616c54c71557f981284f0300024900057363616c654c0006696e7456616c7400164c6a6176612f6d6174682f426967496e74656765723b7871007e000400000001737200146a6176612e6d6174682e426967496e74656765728cfc9f1fa93bfb1d030006490008626974436f756e744900096269744c656e67746849001366697273744e6f6e7a65726f427974654e756d49000c6c6f776573745365744269744900067369676e756d5b00096d61676e69747564657400025b427871007e0004fffffffffffffffffffffffefffffffe00000001757200025b42acf317f8060854e002000078700000000230347878737200156a6176612e6d6174682e4d617468436f6e746578744d6f25c81f7601ff020002490009707265636973696f6e4c000c726f756e64696e674d6f64657400184c6a6176612f6d6174682f526f756e64696e674d6f64653b7870000000227e7200166a6176612e6d6174682e526f756e64696e674d6f646500000000000000001200007872000e6a6176612e6c616e672e456e756d0000000000000000120000787074000948414c465f4556454e' (COST_VALUE DECIMAL(10, 2))"; SQL statement:
+insert into despesa(description,cost_value) values(?,?) -- (?1, ?2) [22018-158]
+11-15 20:17:08 jdbc[82]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "X'aced0005737200157363616c612e6d6174682e426967446563696d616ce359e6dc7ccc98d20200024c000a626967446563696d616c7400164c6a6176612f6d6174682f426967446563696d616c3b4c00026d637400174c6a6176612f6d6174682f4d617468436f6e746578743b787200167363616c612e6d6174682e5363616c614e756d6265721265d75c7e2e8081020000787200106a6176612e6c616e672e4e756d62657286ac951d0b94e08b0200007870737200146a6176612e6d6174682e426967446563696d616c54c71557f981284f0300024900057363616c654c0006696e7456616c7400164c6a6176612f6d6174682f426967496e74656765723b7871007e000400000000737200146a6176612e6d6174682e426967496e74656765728cfc9f1fa93bfb1d030006490008626974436f756e744900096269744c656e67746849001366697273744e6f6e7a65726f427974654e756d49000c6c6f776573745365744269744900067369676e756d5b00096d61676e69747564657400025b427871007e0004fffffffffffffffffffffffefffffffe00000001757200025b42acf317f8060854e00200007870000000040be9fa507878737200156a6176612e6d6174682e4d617468436f6e746578744d6f25c81f7601ff020002490009707265636973696f6e4c000c726f756e64696e674d6f64657400184c6a6176612f6d6174682f526f756e64696e674d6f64653b7870000000227e7200166a6176612e6d6174682e526f756e64696e674d6f646500000000000000001200007872000e6a6176612e6c616e672e456e756d0000000000000000120000787074000948414c465f4556454e' (COST_VALUE DECIMAL(10, 2))"; SQL statement:
+insert into despesa(description,cost_value) values(?,?) -- (?1, ?2) [22018-158]
+11-20 18:40:51 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLException: Sequence "TASK_ID_SEQ" not found; SQL statement:
+insert into tipo_despesa(name) values(?) [90036-158]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.schema.Schema.getSequence(Schema.java:467)
+	at org.h2.expression.Function.getSequence(Function.java:1228)
+	at org.h2.expression.Function.getValueWithArgs(Function.java:1086)
+	at org.h2.expression.Function.getValue(Function.java:441)
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:268)
+	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:679)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:120)
+	at org.h2.command.dml.Insert.update(Insert.java:84)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:71)
+	at org.h2.command.Command.executeUpdate(Command.java:212)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:143)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:129)
+	at com.jolbox.bonecp.PreparedStatementHandle.executeUpdate(PreparedStatementHandle.java:203)
+	at anorm.Sql$class.executeUpdate(Anorm.scala:451)
+	at anorm.SimpleSql.executeUpdate(Anorm.scala:359)
+	at models.CostType$$anonfun$persist$1.apply(CostType.scala:18)
+	at models.CostType$$anonfun$persist$1.apply(CostType.scala:16)
+	at play.api.db.DBApi$class.withConnection(DB.scala:79)
+	at play.api.db.BoneCPApi.withConnection(DB.scala:273)
+	at play.api.db.DB$$anonfun$withConnection$3.apply(DB.scala:158)
+	at play.api.db.DB$$anonfun$withConnection$3.apply(DB.scala:158)
+	at scala.Option.map(Option.scala:133)
+	at play.api.db.DB$.withConnection(DB.scala:158)
+	at models.CostType.persist(CostType.scala:15)
+	at controllers.Application$$anonfun$newCostType$1$$anonfun$apply$4.apply(Application.scala:58)
+	at controllers.Application$$anonfun$newCostType$1$$anonfun$apply$4.apply(Application.scala:56)
+	at play.api.data.Form$$anonfun$fold$1.apply(Form.scala:122)
+	at scala.Option.map(Option.scala:133)
+	at play.api.data.Form.fold(Form.scala:122)
+	at controllers.Application$$anonfun$newCostType$1.apply(Application.scala:54)
+	at controllers.Application$$anonfun$newCostType$1.apply(Application.scala:53)
+	at play.api.mvc.Action$$anon$1.apply(Action.scala:170)
+	at play.core.ActionInvoker$$anonfun$receive$1$$anonfun$6.apply(Invoker.scala:126)
+	at play.core.ActionInvoker$$anonfun$receive$1$$anonfun$6.apply(Invoker.scala:126)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:17)
+	at play.core.ActionInvoker$$anonfun$receive$1.apply(Invoker.scala:125)
+	at play.core.ActionInvoker$$anonfun$receive$1.apply(Invoker.scala:115)
+	at akka.actor.Actor$class.apply(Actor.scala:318)
+	at play.core.ActionInvoker.apply(Invoker.scala:113)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:626)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:197)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:179)
+	at akka.dispatch.ForkJoinExecutorConfigurator$MailboxExecutionTask.exec(AbstractDispatcher.scala:516)
+	at akka.jsr166y.ForkJoinTask.doExec(ForkJoinTask.java:259)
+	at akka.jsr166y.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:975)
+	at akka.jsr166y.ForkJoinPool.runWorker(ForkJoinPool.java:1479)
+	at akka.jsr166y.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:104)
